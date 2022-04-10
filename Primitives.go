@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	// boolean variables can be used as flag
@@ -90,7 +92,57 @@ func main() {
 	// % and bitwise operator are not available with floating point
 
 	// we can work with complex numbers in go as well
-	// complex 64 or complex 128
+	// complex 64 or complex 128 -> made up of two float32s or two float64s
 	var comp complex64 = 1 + 2i
 	fmt.Printf("%v %T\n", comp, comp)
+
+	// operator available to us are the simple operator
+	comp1 := 1 + 2i
+	comp2 := 2 + 4i
+
+	fmt.Println(comp1 + comp2)
+	fmt.Println(comp1 - comp2)
+	fmt.Println(comp1 * comp2)
+	fmt.Println(comp2 / comp1)
+
+	// two functions called real and imag to access the parts of a complex number
+	fmt.Printf("%v %T\n", real(comp), real(comp))
+	fmt.Printf("%v %T\n", imag(comp), imag(comp))
+
+	var n_comp = complex(5, 12)
+	fmt.Printf("%v %T\n", n_comp, n_comp)
+
+	//
+	s := "This is a string"
+	fmt.Printf("%v, %T\n", s[2], s[2]) // this output 105, unint8
+	// this is because strings are an alias for bytes and
+
+	fmt.Printf("%v, %T\n", string(s[2]), string(s[2]))
+	// this will correct it
+
+	// s[2] = "u"  -> this will cause an error as strings are immutable
+
+	s1 := "This is a s1 string"
+	s2 := "This is a s2 string"
+
+	fmt.Printf("%v,%T\n", s1+s2, s1+s2)
+
+	// convert string to a collection of bytes
+	bites := []byte(s)                  // a collection of unsigned 8 bit integers
+	fmt.Printf("%v,%T\n", bites, bites) // this will return the ascii value of all the letters in the strings
+
+	// if we send files/ strings around we can use the collection of bytes to do that
+
+	// Rune datatype -> utf32 -> can be 32 bit long but does not have to be 32 bits
+	// any utf8 is also a utf32 value
+	// single quotes for runes
+	// rune is the same as an int32
+	r := 'a'
+	fmt.Printf("%v, %T\n", r, r)
+
+	var r1 rune = 'b'
+	fmt.Printf("%v, %T\n", r1, r1)
+
+	// for working with runes we use the strings package
+
 }
